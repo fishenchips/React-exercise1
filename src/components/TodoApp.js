@@ -1,5 +1,6 @@
 //rfce
 import React from 'react';
+import Todo from './Todo';
 
 /**
  * Part 1: Generate list (See Lists and keys lecture)
@@ -31,18 +32,13 @@ const todos = [
 ];
 
 function TodoApp() {
-    //go through all items in the array todos
-   let listToDo = todos.map( (todo) => {
-        //create a semantic element, article with key. Inside, for each "todo", show task in a h2
-        return (
-            <article key={todo.id}>
-                <h2>{todo.task}</h2>
-            </article>
-        )
-    })
-
+   
   return (
-    <div>{listToDo}</div>
+    <div>
+        {//Declare the map function in the parent and obtain the code through the child component, <Todo />
+            todos.map( (todo) => <Todo key={todo.id} todo={todo}/>)   
+        } 
+    </div>
   )
 }
 

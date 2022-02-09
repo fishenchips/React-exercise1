@@ -1,8 +1,12 @@
 import React from 'react'
 
-function Todo() {
+
+//using props, pass down the map function and send back the html needed
+function Todo(props) {
   return (
-    <div>Todo</div>
+    <article>
+        <h3>{props.todo.task}</h3>
+    </article>
   )
 }
 
