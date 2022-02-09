@@ -1,6 +1,6 @@
 //rfce
-import React from 'react';
-import Todo from './Todo';
+import React, {useState} from 'react';
+import Todo  from './Todo';
 
 /**
  * Part 1: Generate list (See Lists and keys lecture)
@@ -32,12 +32,20 @@ const todos = [
 ];
 
 function TodoApp() {
+    // add a function where a class "done" is added when an element is pressed
+    const handleClick = (e)=> {
+        {e.target.setAttribute("class", "done")}
+    }
    
   return (
     <div>
-        {//Declare the map function in the parent and obtain the code through the child component, <Todo />
-            todos.map( (todo) => <Todo key={todo.id} todo={todo}/>)   
-        } 
+        <ul>
+            {//Declare the map function in the parent and obtain the code through the child component, <Todo />
+            //where todo={todo} is the props sent down to child compontent
+            //same thing for the function handleClick
+                todos.map( (todo) => <Todo key={todo.id} todo={todo} handleClick={handleClick}/>)   
+            } 
+        </ul>
     </div>
   )
 }

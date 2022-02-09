@@ -4,6 +4,6 @@
 
 .done,
 .done p,
-.done li {
+.done li{
   text-decoration: line-through;
 }
