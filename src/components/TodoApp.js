@@ -33,20 +33,25 @@ const todos = [
 
 function TodoApp() {
     // add a function where a class "done" is added when an element is pressed
+    //changed from setAttribute to classList.add() because otherwise it writes over. now it ADDS
     const handleClick = (e)=> {
-        {e.target.setAttribute("class", "done")}
-    }
-   
+        e.target.classList.add("done")
+    }  
+    
   return (
-    <div>
         <ul>
-            {//Declare the map function in the parent and obtain the code through the child component, <Todo />
-            //where todo={todo} is the props sent down to child compontent
-            //same thing for the function handleClick
-                todos.map( (todo) => <Todo key={todo.id} todo={todo} handleClick={handleClick}/>)   
-            } 
+           {/*  Declare the map function in the parent and obtain the code through the child component, <Todo />
+            where todo={todo} is the props sent down to child compontent
+            same thing for the function handleClick 
+            Also add a tenery option, where odd id's get a newly generated class*/}
+            {
+                todos.map( (todo) => (
+                    todo.id%2 !=0 
+                        ? <Todo key={todo.id} todo={todo} handleClick={handleClick} generateClass="odd"/>
+                        : <Todo key={todo.id} todo={todo} handleClick={handleClick} generateClass=""/>
+                ))
+            }
         </ul>
-    </div>
   )
 }
 
